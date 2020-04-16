@@ -1,0 +1,14 @@
+@(device: DisplayDevice)
+
+<div id="stores">
+    @if(device.android) {
+        @badgePlayMarket()
+    } else {
+        @if(device.ios) {
+            @badgeAppStore()
+        } else {
+            @badgeAppStore()
+            @badgePlayMarket()
+        }
+    }
+</div>
