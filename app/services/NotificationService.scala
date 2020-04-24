@@ -62,7 +62,7 @@ class NotificationService @Inject()(configService: ConfigService)
           msg.putStringData("tst", tst.toString)
         }, builder => {
           builder.setCategoryName("MAKE_CONTACT")
-          builder.setLocalizedAlertTitle("MAKE_CONTACT")
+          builder.setLocalizedAlertMessage("MAKE_CONTACT")
           builder.addCustomProperty("secret", secret)
           builder.addCustomProperty("tst", tst)
         })
