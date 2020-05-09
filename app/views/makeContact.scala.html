@@ -1,9 +1,9 @@
-@(device: DisplayDevice)
+@(device: DisplayDevice, appName: String, appUrl: String)
 
-    @main("Welcome to OpenCovidTrace!") {
+    @main(s"Welcome to $appName!") {
         <div class="tcenter">
-            <h1>You need to have OpenCovidTrace app installed to make a contact.</h1>
-            <p>Visit <a href="https://opencovidtrace.org">https://opencovidtrace.org</a>
+            <h1>You need to have @appName app installed to make a contact.</h1>
+            <p>Visit <a href="@appUrl">@appUrl</a>
                 to learn more.</p>
         </div>
     }

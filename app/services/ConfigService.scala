@@ -6,10 +6,10 @@ import play.api.Application
 @Singleton
 class ConfigService @Inject()(appProvider: Provider[Application]) {
 
-  lazy val dev: Boolean = config.getOptional[Boolean]("dev").getOrElse(false)
 
-  lazy val tracksApiToken: String = getString("tracks.api.token")
-  lazy val tracksApiUrl: String = getString("tracks.api.url")
+  lazy val appId: String = getString("app.id")
+  lazy val appName: String = getString("app.name")
+  lazy val appUrl: String = getString("app.url")
 
   def getString(param: String): String = config.get[String](param)
 

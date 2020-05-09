@@ -6,12 +6,13 @@ import javax.inject._
 import play.api.Logging
 import play.api.libs.json.JsValue
 import play.api.mvc._
-import services.NotificationService
+import services.{ConfigService, NotificationService}
 
 import scala.concurrent.ExecutionContext
 
 @Singleton
 class ContactController @Inject()(val controllerComponents: ControllerComponents,
+                                  configService: ConfigService,
                                   notificationService: NotificationService)
                                  (implicit ec: ExecutionContext) extends BaseController with Logging {
 
@@ -29,7 +30,7 @@ class ContactController @Inject()(val controllerComponents: ControllerComponents
   }
 
   def makeContactPage(): Action[AnyContent] = Action { implicit req =>
-    Ok(views.html.makeContact(getDevice()))
+    Ok(views.html.makeContact(getDevice(), configService.appName, configService.appUrl))
   }
 
   private def getHeader[A](name: String)(implicit request: Request[Any]): Option[String] = {

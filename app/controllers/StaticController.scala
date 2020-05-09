@@ -10,12 +10,6 @@ class StaticController @Inject()(val controllerComponents: ControllerComponents,
                                  val assets: Assets) extends BaseController {
 
   def apns(): Action[AnyContent] = Action {
-    val suffix = if (configService.dev) {
-      ".dev"
-    } else {
-      ""
-    }
-
     Ok(
       s"""
          |{
@@ -23,7 +17,7 @@ class StaticController @Inject()(val controllerComponents: ControllerComponents,
          |    "apps": [],
          |    "details": [
          |      {
-         |        "appID": "S5ENNERNQZ.org.opencovidtrace.octrace$suffix",
+         |        "appID": "${configService.appId}",
          |        "paths": [
          |          "/app/*"
          |        ]
