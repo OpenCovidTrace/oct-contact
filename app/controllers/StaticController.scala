@@ -17,7 +17,7 @@ class StaticController @Inject()(val controllerComponents: ControllerComponents,
          |    "apps": [],
          |    "details": [
          |      {
-         |        "appID": "${configService.appId}",
+         |        "appID": "${configService.appIosId}",
          |        "paths": [
          |          "/app/*"
          |        ]
@@ -25,6 +25,29 @@ class StaticController @Inject()(val controllerComponents: ControllerComponents,
          |    ]
          |  }
          |}
+         |""".stripMargin).withHeaders(
+      "Content-Type" -> "text/plain",
+      "Content-Disposition" -> "attachment; filename=apple-app-site-association"
+    )
+  }
+
+  def assetlinks(): Action[AnyContent] = Action {
+    Ok(
+      s"""
+         [
+         |  {
+         |    "relation": [
+         |      "delegate_permission/common.handle_all_urls"
+         |    ],
+         |    "target": {
+         |      "namespace": "android_app",
+         |      "package_name": "${configService.appAndroidId}",
+         |      "sha256_cert_fingerprints": [
+         |        "${configService.appAndroidFingerprint}"
+         |      ]
+         |    }
+         |  }
+         |]
          |""".stripMargin).withHeaders(
       "Content-Type" -> "text/plain",
       "Content-Disposition" -> "attachment; filename=apple-app-site-association"

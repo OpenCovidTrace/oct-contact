@@ -4,16 +4,17 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /                                  controllers.HomeController.index
+GET         /                                   controllers.HomeController.index
 
 # Make contact API
-POST        /makeContact                       controllers.ContactController.makeContact()
+POST        /makeContact                        controllers.ContactController.makeContact()
 
 # Deeplinks
-GET         /app/contact                       controllers.ContactController.makeContactPage()
+GET         /app/contact                        controllers.ContactController.makeContactPage()
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                      controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                       controllers.Assets.versioned(path="/public", file: Asset)
 
 # static mappings
-GET         /apple-app-site-association        controllers.StaticController.apns()
+GET         /apple-app-site-association         controllers.StaticController.apns()
+GET         /.well-known/assetlinks.json        controllers.StaticController.assetlinks()

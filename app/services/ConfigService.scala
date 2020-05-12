@@ -7,7 +7,9 @@ import play.api.Application
 class ConfigService @Inject()(appProvider: Provider[Application]) {
 
 
-  lazy val appId: String = getString("app.id")
+  lazy val appAndroidId: String = getString("app.android.id")
+  lazy val appAndroidFingerprint: String = getString("app.android.fingerprint")
+  lazy val appIosId: String = getString("app.ios.id")
   lazy val appName: String = getString("app.name")
   lazy val appUrl: String = getString("app.url")
 
